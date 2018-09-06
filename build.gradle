@@ -1,9 +1,32 @@
-apply plugin: 'java'
+plugins {
+    id 'com.jfrog.bintray' version '1.8.4'
+}
 
-group = 'io.github.antropoff'
-version = '0.1'
+apply plugin: 'java'
 
 repositories {
     jcenter()
     mavenCentral()
+}
+
+group = 'io.github.antropoff'
+version = '0.1'
+
+bintray {
+    user = hasProperty('bintray_user') ? bintray_user : ''
+    key = hasProperty('bintray_api_key') ? bintray_api_key : ''
+    publish = true
+    publications = ['mavenJava']
+    pkg {
+        repo = 'repo'
+        name = project.name
+        userOrg = 'antropoff'
+        websiteUrl = 'https://github.com/antropoff/$name'
+        githubRepo = 'antropoff/$name'
+        vcsUrl = 'https://github.com/antropoff/$name'
+        description = 'Some utils'
+        labels = ['java']
+        licenses = ['MIT']
+        desc = description
+    }
 }
