@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+group = 'io.github.antropoff'
+version = '0.1'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
